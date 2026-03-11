@@ -8,6 +8,7 @@ urlpatterns = [
 
     # ✅ Accounts API routes
     path("api/accounts/", include("accounts.urls")),
+    path("api/trailbook/", include("trailbook.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

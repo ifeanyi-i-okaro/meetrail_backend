@@ -277,6 +277,10 @@ class Notification(models.Model):
         ("like", "Like"),
         ("comment", "Comment"),
         ("message", "Message"),
+        ("trail_start", "Trail Start"),
+        ("trail_share", "Trail Share"),
+        ("trail_comment", "Trail Comment"),
+        ("trail_reply", "Trail Reply"),
     )
 
     recipient = models.ForeignKey(

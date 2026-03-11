@@ -556,3 +556,4 @@ class ChatThreadSerializer(serializers.ModelSerializer):
         if not request or not request.user.is_authenticated:
             return False
         return obj.created_by_id == request.user.id
+

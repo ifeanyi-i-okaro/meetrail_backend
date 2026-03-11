@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # Local
     "channels",
     "accounts",
+    "trailbook",
 ]
 
 # Enable GeoDjango only when GDAL/GEOS are installed locally.
@@ -172,6 +173,36 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+TRAILBOOK_PLAYBACK_AUTORUN = os.getenv("TRAILBOOK_PLAYBACK_AUTORUN", "1") == "1"
+TRAILBOOK_PLAYBACK_FPS = int(os.getenv("TRAILBOOK_PLAYBACK_FPS", "8"))
+TRAILBOOK_PLAYBACK_MAX_SECONDS = int(os.getenv("TRAILBOOK_PLAYBACK_MAX_SECONDS", "900"))
+TRAILBOOK_PLAYBACK_MAX_FRAMES = int(os.getenv("TRAILBOOK_PLAYBACK_MAX_FRAMES", "7200"))
+TRAILBOOK_PLAYBACK_MOMENT_FLASH_SECONDS = float(
+    os.getenv("TRAILBOOK_PLAYBACK_MOMENT_FLASH_SECONDS", "3.5")
+)
+TRAILBOOK_PLAYBACK_VIDEO_MAX_SECONDS = float(
+    os.getenv("TRAILBOOK_PLAYBACK_VIDEO_MAX_SECONDS", "8.0")
+)
+TRAILBOOK_MAP_TILE_URL_TEMPLATE = os.getenv(
+    "TRAILBOOK_MAP_TILE_URL_TEMPLATE",
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+)
+TRAILBOOK_MAP_TILE_USER_AGENT = os.getenv(
+    "TRAILBOOK_MAP_TILE_USER_AGENT",
+    "Meetrail/1.0 (+https://meetrail.app)",
+)
+TRAILBOOK_MAP_TILE_TIMEOUT_SECONDS = float(
+    os.getenv("TRAILBOOK_MAP_TILE_TIMEOUT_SECONDS", "3.0")
+)
+
+# TrailBook media uploads (video/photo moments)
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(
+    os.getenv("DATA_UPLOAD_MAX_MEMORY_SIZE", str(100 * 1024 * 1024))
+)
+FILE_UPLOAD_MAX_MEMORY_SIZE = int(
+    os.getenv("FILE_UPLOAD_MAX_MEMORY_SIZE", str(20 * 1024 * 1024))
+)
 
 # ---------------------------------------------------------------------
 # ✅ TIME & LANGUAGE
